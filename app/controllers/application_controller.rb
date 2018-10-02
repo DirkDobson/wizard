@@ -16,8 +16,8 @@ class ApplicationController < ActionController::API
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, [:name])
-   end
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
 
     def render_error(model, type = 'array', status = 422)
       case type
