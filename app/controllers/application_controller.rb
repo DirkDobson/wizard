@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
 
   before_action :authenticate_user!, if: proc {
@@ -13,6 +14,11 @@ class ApplicationController < ActionController::API
 
 
   private
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, [:name])
+   end
+
     def render_error(model, type = 'array', status = 422)
       case type
         when 'string'
@@ -26,5 +32,5 @@ class ApplicationController < ActionController::API
       render json: errors, status: status
     end
 
-
+   
 end
