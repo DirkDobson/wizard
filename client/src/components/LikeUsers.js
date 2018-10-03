@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {
   Card,
-  Divider,
   List,
   Image,
 } from 'semantic-ui-react'
@@ -25,7 +24,32 @@ class LikeUsers extends React.Component {
   }
 
   render() {
-    return null
+    return (
+      <Card.Group itemsPerRow={4} stackable>
+        { this.props.likeUsers.map( user => {
+          const { id, name, image, tags } = user
+          return (
+            <Card key={id}>
+            <Image src={image || defaultImage}
+            alt="user Avatar"
+            />
+            <Card.Header>{name}</Card.Header>
+            <Card.Description>
+              <List divided horizontal>
+                { tags.map( tag => 
+                 <List.Item key={tag.id}>
+                 #{tag.name}
+                 </List.Item> 
+                 )
+                 }
+              </List>
+              </Card.Description>
+              </Card>
+          )
+        })
+        }
+      </Card.Group>
+    )
   }
 }
 

@@ -1,4 +1,11 @@
 class Api::UsersController < ApplicationController
+
+  def like
+    tags = current_user.tags.map(&:name)
+    users = User.like_users(current_user.id, tags)
+    render json: users
+  end
+
   def update
     user = User.find(params[:id])
     user.name = params[:name] ? params[:name] : user.name

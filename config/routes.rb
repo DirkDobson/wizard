@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
    resources :users, only: :update
    resources: tags, only: [:index, :create, :destroy]
+   get '/like_users', to: 'users#like'
   end
 
   #Do not place any routes below this one
