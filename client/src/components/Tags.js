@@ -1,5 +1,6 @@
 import React from 'react'
-import { container, Container } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 import TagForm from './TagForm'
 
 const Tags = () => (
@@ -7,4 +8,8 @@ const Tags = () => (
     <TagForm />
   </Container>
 )
-export default Tags
+
+const mapStateToProps = (state) => {
+  return {tags: state.tags}
+}
+export default connect(state => (mapStateToProps))(Tags)
