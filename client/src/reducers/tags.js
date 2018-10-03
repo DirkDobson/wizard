@@ -7,7 +7,7 @@ export const addTag = (tag) => {
     axios.post('/api/tags', {tag})
     .then( res => {
       if (res.data)
-  dispatch({ type: ADD_TAG, tag })
+  dispatch({ type: ADD_TAG(res.data) })
     })
   }
 }
