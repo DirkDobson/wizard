@@ -6,6 +6,7 @@ import {
   Image,
 } from 'semantic-ui-react'
 import { getLikeUsers } from '../reducers/likeUsers'
+import TagList from './TagList';
 
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png'
 
@@ -34,16 +35,8 @@ class LikeUsers extends React.Component {
             alt="user Avatar"
             />
             <Card.Header>{name}</Card.Header>
-            <Card.Description>
-              <List divided horizontal>
-                { tags.map( tag => 
-                 <List.Item key={tag.id}>
-                 #{tag.name}
-                 </List.Item> 
-                 )
-                 }
-              </List>
-              </Card.Description>
+            <TagList />
+              
               </Card>
           )
         })
