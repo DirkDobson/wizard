@@ -15,8 +15,8 @@ class LikeUsers extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.likeUsers !== this.props.likeUsers)
-      this.reload()
+    if (prevProps.tags !== this.props.tag)
+      this.reload()   
   }
 
   reload = () => {
